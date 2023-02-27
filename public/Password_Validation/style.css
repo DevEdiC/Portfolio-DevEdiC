@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #FA2D70;
+}
+
+.container {
+    position: relative;
+    width: 300px;
+}
+
+.container .input__container {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.container .input__container input {
+    position: relative;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 10px 5px;
+}
+
+.container .input__container #toggle__btn {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .input__container #toggle__btn::before {
+    content: '\f06e';
+    font-family: fontAwesome;
+}
+
+.container .input__container #toggle__btn.hide::before {
+    content: '\f070';
+}
+
+.validacion {
+    background: #cc255d;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.validacion ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.validacion  ul li {
+    position: relative;
+    list-style: none;
+    color: #f3f3f3;
+    font-size: 0.85em;
+    transition: 0.5s;
+}
+
+.validacion  ul li.valid {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.validacion ul li::before {
+    content: '\f2d3';
+    font-family: fontAwesome;
+    width: 20px;
+    height: 10px;
+    display: inline-flex;
+}
+
+.validacion  ul li.valid::before {
+    content: '\f14a';
+    color: #00df0b;
+}

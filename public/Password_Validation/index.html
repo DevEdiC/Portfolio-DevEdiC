@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <div class="input__container">
+                <input type="password" id="password" placeholder="Password" onkeyup="checkPassword(this.value)">
+                <span id="toggle__btn"></span>
+            </div>
+            <div class="validacion">
+                <ul>
+                    <li id="minuscula">Al menos una letra minúscula</li>
+                    <li id="mayuscula">Al menos una letra mayúscula</li>
+                    <li id="numero">Al menos un número</li>
+                    <li id="c_especial">Al menos un carácter especial</li>
+                    <li id="longitud">Al menos 8 caracteres</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <script>
+        let password = document.getElementById('password');
+        let toggle__btn = document.getElementById('toggle__btn');
+
+        let minuscula = document.getElementById('minuscula');
+        let mayuscula = document.getElementById('mayuscula');
+        let numero = document.getElementById('numero');
+        let c_especial = document.getElementById('c_especial');
+        let longitud = document.getElementById('longitud');
+
+        function checkPassword(data){
+            const min = new RegExp('(?=.*[a-z])');
+            const may = new RegExp('(?=.*[A-Z])');
+            const num = new RegExp('(?=.*[0-9])');
+            const c_esp = new RegExp('(?=.*[!@#\$%\^&\*])');
+            const long = new RegExp('(?=.{8,})');
+
+            //min validation
+            if (min.test(data)) {
+                minuscula.classList.add('valid');
+            } else {
+                minuscula.classList.remove('valid');
+            }
+            //may validation
+            if (may.test(data)) {
+                mayuscula.classList.add('valid');
+            } else {
+                mayuscula.classList.remove('valid');
+            }
+            //num validation
+            if (num.test(data)) {
+                numero.classList.add('valid');
+            } else {
+                numero.classList.remove('valid');
+            }
+            //special validation
+            if (c_esp.test(data)) {
+                c_especial.classList.add('valid');
+            } else {
+                c_especial.classList.remove('valid');
+            }
+            //len validation
+            if (long.test(data)) {
+                longitud.classList.add('valid');
+            } else {
+                longitud.classList.remove('valid');
+            }
+        }
+
+        // Show Hide Password
+        toggle__btn.onclick = function() {
+            if (password.type === 'password') {
+                password.setAttribute('type','text');
+                toggle__btn.classList.add('hide');
+            } else {
+                password.setAttribute('type','password');
+                toggle__btn.classList.remove('hide');
+            }
+        }
+    </script>
+</body>
+</html>
